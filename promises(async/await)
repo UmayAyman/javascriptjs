@@ -1,0 +1,59 @@
+function hello(){
+    console.log("hello");
+}
+setTimeout(hello, 2000);
+//OR arrow function directly
+console.log("one");
+console.log("two");
+setTimeout(() =>{           //last two console.log statements won't wait for this code to execute first
+    console.log("hello");
+}, 4000); //timeout 4 sec
+console.log("three");
+console.log("four");
+
+
+
+//CALLBACKS (sync)
+function sum(a, b){
+    console.log(a + b);
+}
+function calculator(a, b , sumcallback){      //sumcallback is a callback
+    sumcallback(a , b);
+}
+calculator(15, 20, sum);
+
+
+
+//PROMISES        (in general programming we don't create promises actually api or other systems create promises for us)
+let promise = new Promise((resolve, rejected) => {
+    console.log("hello! i'm a promise");
+    resolve(123);    //built in function and called when we have to pass some value
+//  rejected("some error");
+})
+
+let fetchData = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve("Data fetched");
+    }, 1000);
+});
+fetchData
+    .then((data) => {
+        console.log(data);  //Data fetched
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+
+
+
+//ASYNC/AWAIt
+
+
+
+
+
+
+//USAGE:
+//Callbacks: You might still encounter callbacks in legacy code or in some older APIs. However, it's recommended to use promises or async/await in new code.
+//Promises: Use promises when handling multiple asynchronous operations and want to avoid callback hell. Promises are useful when you need more control over chaining operations.
+//Async/Await: Use async/await when you want cleaner and more readable code. It is the most modern and recommended way to handle asynchronous operations in JavaScript, especially when working with try/catch for error handling.
